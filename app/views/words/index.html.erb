@@ -1,0 +1,32 @@
+<!--display error message if there is one-->
+<% if @error %>
+  <%= @error %>
+<%end %>
+
+<!--form for user to enter a word they wish to define-->
+<%= form_tag :action => 'define' do %>
+  <p><label for = "word_name">Enter a word to search its definition</label>
+
+    <%= text_field 'word', 'name', :placeholder => 'ace' %></p>
+
+
+  <%= submit_tag "Search" %>
+
+<% end -%>
+
+<!--Displays the last 5 words defined-->
+<ul id = "words">
+  <% @words.reverse.each_with_index do |word, i| %>
+    <li>
+    <% if i == 0 %>
+        <h1><%= word["name"] %></h1>
+        <h4> <%= word["definition"] %></h4>
+    <% else %>
+      <h3><%= word["name"] %></h3>
+      <p> <%= word["definition"] %></p>
+    <% end %>
+    </li>
+
+  <% end %>
+</ul>
+
