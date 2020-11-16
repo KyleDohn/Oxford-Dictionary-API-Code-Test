@@ -3,13 +3,16 @@
   <%= @error %>
 <%end %>
 
-<!--form for user to enter a word they wish to define-->
+<!--form for user to enter a word they wish to define and the source they wish to define from-->
 <%= form_tag :action => 'define' do %>
   <p><label for = "word_name">Enter a word to search its definition</label>
 
-    <%= text_field 'word', 'name', :placeholder => 'ace' %></p>
+    <%= text_field 'word', 'name', :placeholder => 'ace' %>
+  </p>
+  <p><label for = "source">Dictionary Source</label>
 
-
+    <%= select_tag('source', options_for_select(@dictionary_list)) %>
+  </p>
   <%= submit_tag "Search" %>
 
 <% end -%>
